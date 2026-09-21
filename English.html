@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المتوحش ستور & حمو ستور — نطق · ترجمة · تمارين</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF6EA;
+    --paper-line:#E4D8B4;
+    --ink:#1E2A24;
+    --ink-soft:#5B6660;
+    --teal:#155059;
+    --teal-dark:#0D393F;
+    --amber:#E7912E;
+    --coral:#D6503A;
+    --card:#FFFEFA;
+    --good:#2F7D5A;
+    --bad:#C44536;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(var(--paper) 0 39px, var(--paper-line) 39px 40px);
+    background-color:var(--paper);
+    color:var(--ink);
+    font-family:'Tajawal',sans-serif;
+    min-height:100vh;
+    padding-bottom:60px;
+  }
+  .eng{font-family:'Space Grotesk',sans-serif;}
+  a{color:inherit;}
+
+  /* ===== Header — styled after the textbook's own banner ===== */
+  header.top{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:stretch;
+    max-width:980px;
+    margin:26px auto 0;
+    box-shadow:0 1px 0 var(--paper-line);
+  }
+  .tag-study{
+    background:var(--coral);
+    color:#fff;
+    font-weight:700;
+    font-size:15px;
+    padding:14px 22px;
+    display:flex;
+    align-items:center;
+    letter-spacing:.5px;
+  }
+  .tag-amber{
+    background:var(--amber);
+    width:18px;
+  }
+  .tag-main{
+    background:var(--teal-dark);
+    color:#fff;
+    flex:1;
+    padding:14px 22px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:2px;
+    min-width:220px;
+  }
+  .tag-main h1{
+    margin:0;
+    font-size:21px;
+    font-weight:700;
+  }
+  .tag-main p{
+    margin:0;
+    font-size:13px;
+    opacity:.85;
+    font-family:'Space Grotesk',sans-serif;
+  }
+
+  main{max-width:980px;margin:0 auto;padding:0 18px;}
+
+  /* ===== Notebook index tabs ===== */
+  nav.tabs{
+    display:flex;
+    gap:6px;
+    margin:22px 0 0;
+    overflow-x:auto;
+  }
+  nav.tabs button{
+    font-family:'Tajawal',sans-serif;
+    font-size:15px;
+    font-weight:700;
+    border:1px solid var(--paper-line);
+    border-bottom:none;
+    background:#F1E9D2;
+    color:var(--ink-soft);
+    padding:11px 20px 13px;
+    border-radius:10px 10px 0 0;
+    cursor:pointer;
+    position:relative;
+    top:1px;
+    white-space:nowrap;
+  }
+  nav.tabs button.active{
+    background:var(--card);
+    color:var(--teal-dark);
+    border-color:var(--teal);
+    border-bottom:1px solid var(--card);
+  }
+  section.panel{
+    display:none;
+    background:var(--card);
+    border:1px solid var(--paper-line);
+    border-radius:0 10px 10px 10px;
+    padding:26px 22px;
+    min-height:420px;
+  }
+  section.panel.active{display:block;}
+
+  h2.panel-title{
+    margin:0 0 4px;
+    font-size:20px;
+    color:var(--teal-dark);
+  }
+  p.panel-sub{
+    margin:0 0 22px;
+    color:var(--ink-soft);
+    font-size:14px;
+  }
+
+  /* ===== Controls ===== */
+  .controls-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    align-items:center;
+    margin-bottom:20px;
+    padding-bottom:18px;
+    border-bottom:1px dashed var(--paper-line);
+  }
+  .field{display:flex;flex-direction:column;gap:5px;}
+  .field label{font-size:12.5px;color:var(--ink-soft);}
+  input[type=text], input[type=search], select, textarea{
+    font-family:'Tajawal',sans-serif;
+    font-size:15px;
+    border:1px solid var(--paper-line);
+    border-radius:6px;
+    padding:9px 12px;
+    background:#fff;
+    color:var(--ink);
+  }
+  input[type=number]{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:15px;
+    border:1px solid var(--paper-line);
+    border-radius:6px;
+    padding:9px 10px;
+    width:64px;
+    text-align:center;
+  }
+  .stepper{display:flex;align-items:center;gap:8px;}
+  .stepper button{
+    width:30px;height:30px;
+    border-radius:6px;
+    border:1px solid var(--teal);
+    background:#fff;
+    color:var(--teal-dark);
+    font-size:16px;
+    cursor:pointer;
+    line-height:1;
+  }
+  .stepper button:hover{background:var(--teal);color:#fff;}
+
+  button.primary{
+    font-family:'Tajawal',sans-serif;
+    font-weight:700;
+    font-size:14.5px;
+    background:var(--teal);
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    padding:10px 18px;
+    cursor:pointer;
+  }
+  button.primary:hover{background:var(--teal-dark);}
+  button.ghost{
+    font-family:'Tajawal',sans-serif;
+    font-weight:700;
+    font-size:14px;
+    background:transparent;
+    color:var(--teal-dark);
+    border:1px solid var(--teal);
+    border-radius:6px;
+    padding:9px 16px;
+    cursor:pointer;
+  }
+  button.ghost:hover{background:#EAF3F2;}
+
+  /* ===== Pronunciation cards ===== */
+  .word-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+    gap:12px;
+  }
+  .word-card{
+    border:1px solid var(--paper-line);
+    border-radius:8px;
+    padding:14px 16px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    background:#fff;
+  }
+  .word-card .row1{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:8px;
+  }
+  .word-card .en{
+    font-size:18px;
+    font-weight:600;
+    color:var(--teal-dark);
+  }
+  .word-card .pos{
+    font-size:11px;
+    color:var(--amber);
+    font-family:'Space Grotesk',sans-serif;
+    border:1px solid var(--amber);
+    border-radius:4px;
+    padding:1px 6px;
+  }
+  .word-card .ar{font-size:14px;color:var(--ink-soft);}
+  .word-card .play-row{
+    display:flex;
+    justify-content:flex-end;
+    margin-top:4px;
+  }
+  .play-btn{
+    background:var(--coral);
+    color:#fff;
+    border:none;
+    border-radius:20px;
+    padding:7px 16px;
+    font-family:'Tajawal',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .play-btn:hover{background:var(--teal-dark);}
+  .play-btn.playing{background:var(--teal);}
+
+  /* ===== Translation ===== */
+  .translate-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+  @media(max-width:640px){ .translate-grid{grid-template-columns:1fr;} }
+  .translate-box{
+    border:1px solid var(--paper-line);
+    border-radius:8px;
+    padding:14px;
+    background:#fff;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .translate-box .lbl{
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--teal-dark);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  textarea{
+    resize:vertical;
+    min-height:130px;
+    width:100%;
+    line-height:1.7;
+  }
+  .swap-wrap{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:6px 0 16px;
+  }
+  .swap-btn{
+    border:1px solid var(--teal);
+    background:#fff;
+    color:var(--teal-dark);
+    border-radius:20px;
+    padding:8px 18px;
+    font-weight:700;
+    cursor:pointer;
+    font-family:'Tajawal',sans-serif;
+  }
+  .swap-btn:hover{background:var(--teal);color:#fff;}
+  .mini-speak{
+    background:none;border:none;cursor:pointer;color:var(--coral);font-size:16px;
+  }
+
+  /* ===== Exercises ===== */
+  .quiz-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .score-pill{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    background:#EAF3F2;
+    color:var(--teal-dark);
+    border-radius:20px;
+    padding:6px 16px;
+    font-size:14px;
+  }
+  .progress-track{
+    height:6px;
+    background:#EFE7CE;
+    border-radius:4px;
+    overflow:hidden;
+    margin-bottom:26px;
+  }
+  .progress-fill{
+    height:100%;
+    background:var(--amber);
+    width:0%;
+    transition:width .3s;
+  }
+  .quiz-card{
+    text-align:center;
+    padding:20px 10px 6px;
+  }
+  .quiz-word{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:38px;
+    font-weight:700;
+    color:var(--teal-dark);
+    margin-bottom:4px;
+  }
+  .quiz-pos{
+    font-size:12px;
+    color:var(--amber);
+    margin-bottom:22px;
+  }
+  .choices{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    max-width:560px;
+    margin:0 auto;
+  }
+  @media(max-width:520px){ .choices{grid-template-columns:1fr;} }
+  .choice-btn{
+    font-family:'Tajawal',sans-serif;
+    font-size:15px;
+    border:1px solid var(--paper-line);
+    background:#fff;
+    border-radius:8px;
+    padding:14px 12px;
+    cursor:pointer;
+    transition:.15s;
+  }
+  .choice-btn:hover{border-color:var(--teal);}
+  .choice-btn.correct{background:#E4F3EA;border-color:var(--good);color:var(--good);font-weight:700;}
+  .choice-btn.wrong{background:#FBE7E3;border-color:var(--bad);color:var(--bad);font-weight:700;}
+  .choice-btn:disabled{cursor:default;}
+
+  .feedback{
+    min-height:26px;
+    margin:18px 0 6px;
+    font-weight:700;
+    font-size:15px;
+  }
+  .feedback.good{color:var(--good);}
+  .feedback.bad{color:var(--bad);}
+
+  .quiz-nav{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:14px;
+  }
+  .quiz-done{
+    text-align:center;
+    padding:30px 10px;
+  }
+  .quiz-done .big{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:42px;
+    font-weight:700;
+    color:var(--teal-dark);
+  }
+  .missed-list{
+    margin:18px auto 0;
+    max-width:420px;
+    text-align:right;
+    font-size:14px;
+    color:var(--ink-soft);
+  }
+  .missed-list li{margin-bottom:4px;}
+
+  footer{
+    max-width:980px;
+    margin:22px auto 0;
+    padding:0 18px;
+    color:var(--ink-soft);
+    font-size:12.5px;
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="tag-study">تعلّم</div>
+  <div class="tag-amber"></div>
+  <div class="tag-main">
+    <h1>المتوحش ستور &amp; حمو ستور</h1>
+    <p class="eng">Pronunciation · Translation · Practice</p>
+  </div>
+</header>
+
+<main>
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="pronounce">🔊 النطق</button>
+    <button class="tab-btn" data-tab="translate">🌐 الترجمة</button>
+    <button class="tab-btn" data-tab="quiz">📝 التمارين</button>
+  </nav>
+
+  <!-- ================= PRONUNCIATION ================= -->
+  <section class="panel active" id="panel-pronounce">
+    <h2 class="panel-title">انطق أي كلمة من مفردات الدرس</h2>
+    <p class="panel-sub">اختر عدد مرات التكرار واللهجة، ثم اضغط زر النطق بجانب أي كلمة — أو اكتب كلمتك الخاصة في الأسفل.</p>
+
+    <div class="controls-row">
+      <div class="field">
+        <label>ابحث عن كلمة</label>
+        <input type="search" id="wordSearch" placeholder="اكتب كلمة إنجليزية أو معناها بالعربي...">
+      </div>
+      <div class="field">
+        <label>عدد مرات النطق</label>
+        <div class="stepper">
+          <button type="button" id="repMinus">−</button>
+          <input type="number" id="repeatCount" value="2" min="1" max="10">
+          <button type="button" id="repPlus">+</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>اللهجة</label>
+        <select id="accentSelect">
+          <option value="en-US">أمريكي 🇺🇸</option>
+          <option value="en-GB">بريطاني 🇬🇧</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>سرعة النطق</label>
+        <select id="rateSelect">
+          <option value="0.8">بطيء</option>
+          <option value="1" selected>عادي</option>
+          <option value="1.2">سريع</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="controls-row" style="border-bottom:none;">
+      <div class="field" style="flex:1;min-width:220px;">
+        <label>أو انطق أي كلمة/جملة تكتبها بنفسك</label>
+        <input type="text" id="customWord" class="eng" placeholder="Type any English word or sentence...">
+      </div>
+      <button class="primary" id="customPlayBtn" style="align-self:flex-end;">🔊 انطق</button>
+    </div>
+
+    <div class="word-grid" id="wordGrid"></div>
+  </section>
+
+  <!-- ================= TRANSLATE ================= -->
+  <section class="panel" id="panel-translate">
+    <h2 class="panel-title">ترجمة فورية لأي جملة أو كلمة</h2>
+    <p class="panel-sub">اكتب أي نص واضغط "ترجم" — تُكتشف اللغة تلقائيًا. يمكنك أيضًا سماع نطق النص الإنجليزي بالضغط على 🔊.</p>
+
+    <div class="swap-wrap">
+      <button class="swap-btn" id="dirBtn">الاتجاه: <span class="eng" id="dirLabel">EN → AR</span> (اضغط للتبديل)</button>
+    </div>
+
+    <div class="translate-grid">
+      <div class="translate-box">
+        <div class="lbl"><span id="srcLabel">النص الأصلي (إنجليزي)</span> <button class="mini-speak" id="speakSrc" title="نطق النص الأصلي">🔊</button></div>
+        <textarea id="srcText" class="eng" placeholder="Type here..."></textarea>
+      </div>
+      <div class="translate-box">
+        <div class="lbl"><span id="tgtLabel">الترجمة (عربي)</span> <button class="mini-speak" id="speakTgt" title="نطق الترجمة">🔊</button></div>
+        <textarea id="tgtText" readonly placeholder="ستظهر الترجمة هنا..."></textarea>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;display:flex;gap:10px;align-items:center;">
+      <button class="primary" id="translateBtn">ترجم الآن</button>
+      <span id="translateStatus" style="font-size:13px;color:var(--ink-soft);"></span>
+    </div>
+  </section>
+
+  <!-- ================= QUIZ ================= -->
+  <section class="panel" id="panel-quiz">
+    <h2 class="panel-title">تمارين على كلمات الدرس</h2>
+    <p class="panel-sub">اختر المعنى الصحيح لكل كلمة. أي كلمة تخطئ فيها ستعود لك في جولة تدريب إضافية في النهاية.</p>
+
+    <div class="quiz-top">
+      <div class="score-pill" id="scorePill">النتيجة: 0 / 0</div>
+      <button class="ghost" id="restartQuiz">إعادة البدء</button>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+    <div id="quizArea"></div>
+  </section>
+</main>
+
+<footer>
+  يعمل النطق بمحرك المتصفح (Web Speech API) والترجمة عبر خدمة ترجمة عامة — النتائج قد تختلف قليلاً حسب المتصفح. تُحفظ نتائج التمارين أثناء الجلسة الحالية فقط.
+</footer>
+
+<script>
+/* ============== DATA — Lesson vocabulary ============== */
+const VOCAB = [
+  {en:"boost", pos:"n/v", ar:"تعزيز / دفعة / يعزز"},
+  {en:"investment", pos:"n", ar:"استثمار"},
+  {en:"pesticides", pos:"n", ar:"مبيدات حشرية / مقاومة للآفات"},
+  {en:"flax", pos:"n", ar:"نبات الكتان"},
+  {en:"notable", pos:"adj", ar:"مميز / هام / جدير بالذكر"},
+  {en:"portion", pos:"n", ar:"جزء / نسبة"},
+  {en:"heritage", pos:"n", ar:"تراث"},
+  {en:"organic", pos:"adj", ar:"عضوي / طبيعي / حيوي"},
+  {en:"processing", pos:"n", ar:"معالجة / تجهيز / تصنيع"},
+  {en:"abroad", pos:"adv", ar:"بالخارج"},
+  {en:"enhance", pos:"v", ar:"يعزز / يقوي"},
+  {en:"perfume", pos:"n", ar:"عطر"},
+  {en:"administration", pos:"n", ar:"إدارة"},
+  {en:"export", pos:"n/v", ar:"تصدير / يصدر"},
+  {en:"population", pos:"n", ar:"تعداد السكان"},
+  {en:"agreement", pos:"n", ar:"موافقة / اتفاق"},
+  {en:"fibers", pos:"n", ar:"ألياف"},
+  {en:"preserve", pos:"v", ar:"يحفظ"},
+  {en:"allow", pos:"v", ar:"يسمح"},
+  {en:"figs", pos:"n", ar:"التين"},
+  {en:"produce", pos:"v", ar:"ينتج"},
+  {en:"amount", pos:"n", ar:"كمية / مقدار"},
+  {en:"governorate", pos:"n", ar:"محافظة"},
+  {en:"producer", pos:"n", ar:"منتج (شخص/جهة)"},
+  {en:"attract", pos:"v", ar:"يجذب"},
+  {en:"graduate", pos:"v/n", ar:"يتخرج / خريج"},
+  {en:"products", pos:"n", ar:"منتجات"},
+  {en:"ban", pos:"v/n", ar:"يمنع / يحظر / حظر"},
+  {en:"growth", pos:"n", ar:"نمو"},
+  {en:"project", pos:"n", ar:"مشروع"},
+  {en:"business management", pos:"n", ar:"إدارة أعمال"},
+  {en:"harvest", pos:"v/n", ar:"يحصد / حصاد"},
+  {en:"promote", pos:"v", ar:"يرقي / يطور"},
+  {en:"collect", pos:"v", ar:"يجمع"},
+  {en:"house", pos:"v", ar:"يؤوي / يوفر سكنًا"},
+  {en:"rainwater", pos:"n", ar:"مياه الأمطار"},
+  {en:"consumer", pos:"n", ar:"مستهلك"},
+  {en:"historically", pos:"adv", ar:"تاريخيًا"},
+  {en:"recycle", pos:"v", ar:"يعيد تدوير"},
+  {en:"container", pos:"n", ar:"حاوية"},
+  {en:"image", pos:"n", ar:"صورة"},
+  {en:"sign", pos:"v/n", ar:"يوقع / علامة"},
+  {en:"crafts", pos:"n", ar:"الحرف اليدوية"},
+  {en:"increase", pos:"v/n", ar:"يزيد / زيادة"},
+  {en:"single-use", pos:"adj", ar:"يُستخدم لمرة واحدة"},
+  {en:"crops", pos:"n", ar:"محاصيل"},
+  {en:"key", pos:"n/adj", ar:"مفتاح / أساسي / رئيسي"},
+  {en:"source", pos:"n", ar:"مصدر"},
+  {en:"cultivation", pos:"n", ar:"زراعة"},
+  {en:"market", pos:"n", ar:"سوق"},
+  {en:"specialize", pos:"v", ar:"يتخصص"},
+  {en:"date palms", pos:"n", ar:"أشجار النخيل"},
+  {en:"materials", pos:"n", ar:"مواد خام"},
+  {en:"specialty", pos:"n", ar:"تخصص"},
+  {en:"development", pos:"n", ar:"تنمية"},
+  {en:"medium", pos:"adj", ar:"متوسط"},
+  {en:"ton", pos:"n", ar:"طن"},
+  {en:"engage", pos:"v", ar:"يشارك / ينخرط"},
+  {en:"mention", pos:"v", ar:"يذكر"},
+  {en:"tourism", pos:"n", ar:"السياحة"},
+  {en:"engineering", pos:"n", ar:"هندسة"},
+  {en:"painting", pos:"n", ar:"الرسم"},
+  {en:"village", pos:"n", ar:"قرية"}
+];
+
+/* ============== TAB SWITCHING ============== */
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* ============== SPEECH (pronunciation) ============== */
+function speakRepeated(text, times, lang, rate){
+  if(!('speechSynthesis' in window)){
+    alert('متصفحك لا يدعم خاصية النطق. جرّب متصفح Chrome.');
+    return;
+  }
+  window.speechSynthesis.cancel();
+  let count = 0;
+  function playOnce(){
+    if(count >= times) return;
+    const utt = new SpeechSynthesisUtterance(text);
+    utt.lang = lang;
+    utt.rate = parseFloat(rate) || 1;
+    utt.onend = ()=>{ count++; if(count < times) setTimeout(playOnce, 250); };
+    window.speechSynthesis.speak(utt);
+  }
+  playOnce();
+}
+
+const repeatCountEl = document.getElementById('repeatCount');
+document.getElementById('repMinus').onclick = ()=>{
+  repeatCountEl.value = Math.max(1, (+repeatCountEl.value||1) - 1);
+};
+document.getElementById('repPlus').onclick = ()=>{
+  repeatCountEl.value = Math.min(10, (+repeatCountEl.value||1) + 1);
+};
+
+function renderWordGrid(filter=''){
+  const grid = document.getElementById('wordGrid');
+  grid.innerHTML = '';
+  const f = filter.trim().toLowerCase();
+  const list = VOCAB.filter(w => !f || w.en.toLowerCase().includes(f) || w.ar.includes(f));
+  list.forEach(w=>{
+    const card = document.createElement('div');
+    card.className = 'word-card';
+    card.innerHTML = `
+      <div class="row1">
+        <span class="en">${w.en}</span>
+        <span class="pos eng">${w.pos}</span>
+      </div>
+      <div class="ar">${w.ar}</div>
+      <div class="play-row"><button class="play-btn">🔊 نطق</button></div>
+    `;
+    const playBtn = card.querySelector('.play-btn');
+    playBtn.addEventListener('click', ()=>{
+      const times = parseInt(repeatCountEl.value)||1;
+      const lang = document.getElementById('accentSelect').value;
+      const rate = document.getElementById('rateSelect').value;
+      speakRepeated(w.en, times, lang, rate);
+    });
+    grid.appendChild(card);
+  });
+  if(list.length===0){
+    grid.innerHTML = '<p style="color:var(--ink-soft);">لا توجد كلمة مطابقة.</p>';
+  }
+}
+renderWordGrid();
+document.getElementById('wordSearch').addEventListener('input', e=>renderWordGrid(e.target.value));
+
+document.getElementById('customPlayBtn').addEventListener('click', ()=>{
+  const text = document.getElementById('customWord').value.trim();
+  if(!text) return;
+  const times = parseInt(repeatCountEl.value)||1;
+  const lang = document.getElementById('accentSelect').value;
+  const rate = document.getElementById('rateSelect').value;
+  speakRepeated(text, times, lang, rate);
+});
+
+/* ============== TRANSLATION ============== */
+let direction = 'en-ar'; // or 'ar-en'
+const dirLabel = document.getElementById('dirLabel');
+const srcLabel = document.getElementById('srcLabel');
+const tgtLabel = document.getElementById('tgtLabel');
+const srcText = document.getElementById('srcText');
+const tgtText = document.getElementById('tgtText');
+
+document.getElementById('dirBtn').addEventListener('click', ()=>{
+  direction = direction === 'en-ar' ? 'ar-en' : 'en-ar';
+  if(direction === 'en-ar'){
+    dirLabel.textContent = 'EN → AR';
+    srcLabel.textContent = 'النص الأصلي (إنجليزي)';
+    tgtLabel.textContent = 'الترجمة (عربي)';
+    srcText.placeholder = 'Type here...';
+  }else{
+    dirLabel.textContent = 'AR → EN';
+    srcLabel.textContent = 'النص الأصلي (عربي)';
+    tgtLabel.textContent = 'الترجمة (إنجليزي)';
+    srcText.placeholder = 'اكتب هنا...';
+  }
+  const tmp = srcText.value; srcText.value = tgtText.value; tgtText.value = tmp;
+});
+
+async function doTranslate(){
+  const text = srcText.value.trim();
+  const statusEl = document.getElementById('translateStatus');
+  if(!text){ statusEl.textContent = 'اكتب نصًا أولاً.'; return; }
+  const sl = direction === 'en-ar' ? 'en' : 'ar';
+  const tl = direction === 'en-ar' ? 'ar' : 'en';
+  statusEl.textContent = 'جارِ الترجمة...';
+  try{
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sl}&tl=${tl}&dt=t&q=${encodeURIComponent(text)}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    const translated = data[0].map(seg => seg[0]).join('');
+    tgtText.value = translated;
+    statusEl.textContent = 'تمت الترجمة ✓';
+  }catch(err){
+    statusEl.textContent = 'تعذّر الاتصال بخدمة الترجمة. تأكد من اتصال الإنترنت.';
+  }
+}
+document.getElementById('translateBtn').addEventListener('click', doTranslate);
+
+document.getElementById('speakSrc').addEventListener('click', ()=>{
+  const text = srcText.value.trim(); if(!text) return;
+  const lang = direction === 'en-ar' ? 'en-US' : 'ar-SA';
+  speakRepeated(text, 1, lang, 1);
+});
+document.getElementById('speakTgt').addEventListener('click', ()=>{
+  const text = tgtText.value.trim(); if(!text) return;
+  const lang = direction === 'en-ar' ? 'ar-SA' : 'en-US';
+  speakRepeated(text, 1, lang, 1);
+});
+
+/* ============== QUIZ ============== */
+let quizQueue = [];
+let quizIndex = 0;
+let quizScore = 0;
+let quizTotal = 0;
+let missedWords = [];
+let currentAnswered = false;
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+function startQuiz(words){
+  quizQueue = shuffle(words);
+  quizIndex = 0;
+  quizScore = 0;
+  quizTotal = 0;
+  missedWords = [];
+  updateScorePill();
+  renderQuizQuestion();
+}
+
+function updateScorePill(){
+  document.getElementById('scorePill').textContent = `النتيجة: ${quizScore} / ${quizTotal}`;
+  const pct = quizQueue.length ? Math.round((quizIndex/quizQueue.length)*100) : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+function renderQuizQuestion(){
+  const area = document.getElementById('quizArea');
+  currentAnswered = false;
+
+  if(quizIndex >= quizQueue.length){
+    if(missedWords.length > 0){
+      const missedCopy = missedWords;
+      area.innerHTML = `
+        <div class="quiz-done">
+          <div class="big">${quizScore} / ${quizTotal}</div>
+          <p>أحسنت! لديك ${missedCopy.length} كلمة تحتاج مراجعة. لنعد تدريبها الآن:</p>
+          <ul class="missed-list">${missedCopy.map(w=>`<li><span class="eng">${w.en}</span> — ${w.ar}</li>`).join('')}</ul>
+          <div class="quiz-nav">
+            <button class="primary" id="retrainBtn">تدريب الكلمات الخطأ</button>
+            <button class="ghost" id="freshBtn">ابدأ من جديد بكل الكلمات</button>
+          </div>
+        </div>`;
+      document.getElementById('retrainBtn').onclick = ()=>startQuiz(missedCopy);
+      document.getElementById('freshBtn').onclick = ()=>startQuiz(VOCAB);
+    }else{
+      area.innerHTML = `
+        <div class="quiz-done">
+          <div class="big">🎉 ${quizScore} / ${quizTotal}</div>
+          <p>ممتاز! أجبت على كل الكلمات بشكل صحيح.</p>
+          <div class="quiz-nav">
+            <button class="primary" id="freshBtn">ابدأ جولة جديدة</button>
+          </div>
+        </div>`;
+      document.getElementById('freshBtn').onclick = ()=>startQuiz(VOCAB);
+    }
+    updateScorePill();
+    return;
+  }
+
+  const word = quizQueue[quizIndex];
+  const wrongPool = VOCAB.filter(w=>w.en !== word.en);
+  const wrongs = shuffle(wrongPool).slice(0,3);
+  const options = shuffle([word, ...wrongs]);
+
+  area.innerHTML = `
+    <div class="quiz-card">
+      <div class="quiz-word eng">${word.en}</div>
+      <div class="quiz-pos eng">${word.pos}</div>
+      <div class="choices">
+        ${options.map(o=>`<button class="choice-btn" data-ar="${o.ar}">${o.ar}</button>`).join('')}
+      </div>
+      <div class="feedback" id="feedback"></div>
+      <div class="quiz-nav"><button class="ghost" id="speakQuizWord">🔊 اسمع الكلمة</button></div>
+    </div>`;
+
+  document.getElementById('speakQuizWord').onclick = ()=>speakRepeated(word.en, 1, 'en-US', 1);
+
+  area.querySelectorAll('.choice-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      if(currentAnswered) return;
+      currentAnswered = true;
+      quizTotal++;
+      const feedback = document.getElementById('feedback');
+      const isCorrect = btn.dataset.ar === word.ar;
+      if(isCorrect){
+        quizScore++;
+        btn.classList.add('correct');
+        feedback.textContent = 'إجابة صحيحة! 👏';
+        feedback.className = 'feedback good';
+      }else{
+        btn.classList.add('wrong');
+        missedWords.push(word);
+        feedback.textContent = `إجابة خاطئة — الصحيح: ${word.ar}`;
+        feedback.className = 'feedback bad';
+        area.querySelectorAll('.choice-btn').forEach(b=>{
+          if(b.dataset.ar === word.ar) b.classList.add('correct');
+        });
+      }
+      area.querySelectorAll('.choice-btn').forEach(b=>b.disabled = true);
+      updateScorePill();
+      setTimeout(()=>{ quizIndex++; renderQuizQuestion(); }, 1300);
+    });
+  });
+}
+
+document.getElementById('restartQuiz').addEventListener('click', ()=>startQuiz(VOCAB));
+
+startQuiz(VOCAB);
+</script>
+</body>
+</html>
