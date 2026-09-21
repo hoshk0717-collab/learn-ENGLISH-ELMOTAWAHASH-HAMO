@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b16">
+<meta name="description" content="موقع المتوحش ستور وحمو ستور لتعلم الإنجليزية والترجمة والنطق والتدريب الذكي">
+<title>المتوحش ستور × حمو ستور | تعلم الإنجليزية</title>
+<style>
+:root{
+  --bg:#070b16;--panel:#0e1527;--panel2:#121c32;--text:#f5f7ff;--muted:#9aa7c2;
+  --primary:#7c5cff;--cyan:#20d9ff;--green:#25d98a;--red:#ff5d73;--gold:#ffc857;
+  --border:rgba(255,255,255,.09);--shadow:0 20px 70px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:
+radial-gradient(circle at 10% 0%,rgba(124,92,255,.22),transparent 30%),
+radial-gradient(circle at 90% 10%,rgba(32,217,255,.14),transparent 28%),var(--bg);
+color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.container{width:min(1180px,92%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(7,11,22,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{font-weight:900;font-size:20px}.brand span{color:var(--cyan)}
+.navlinks{display:flex;gap:8px;flex-wrap:wrap}
+.navlinks button,.ghost{background:transparent;color:var(--text);border:1px solid var(--border);padding:9px 13px;border-radius:12px}
+.hero{padding:65px 0 35px;text-align:center}
+.badge{display:inline-flex;padding:7px 12px;border:1px solid rgba(32,217,255,.25);background:rgba(32,217,255,.07);border-radius:999px;color:var(--cyan);font-weight:700}
+h1{font-size:clamp(38px,7vw,78px);line-height:1.02;margin:18px 0 12px;letter-spacing:-2px}
+.gradient{background:linear-gradient(90deg,#fff,var(--cyan),#9d7cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:760px;margin:0 auto;color:var(--muted);font-size:18px;line-height:1.8}
+.stats{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:25px}
+.stat{padding:10px 14px;background:var(--panel);border:1px solid var(--border);border-radius:14px}
+section{padding:28px 0}
+.section-title{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:15px}
+.section-title h2{margin:0;font-size:30px}.section-title p{color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.card{grid-column:span 6;background:linear-gradient(145deg,rgba(18,28,50,.96),rgba(10,15,29,.96));border:1px solid var(--border);border-radius:22px;padding:22px;box-shadow:var(--shadow)}
+.card.full{grid-column:1/-1}.card.third{grid-column:span 4}
+@media(max-width:800px){.card,.card.third{grid-column:1/-1}.navlinks{display:none}h1{letter-spacing:-1px}}
+label{display:block;color:#cbd5eb;font-weight:700;margin:12px 0 7px}
+input,textarea,select{width:100%;background:#090f1e;color:var(--text);border:1px solid var(--border);border-radius:14px;padding:13px;outline:none}
+input:focus,textarea:focus,select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(32,217,255,.08)}
+textarea{min-height:125px;resize:vertical}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1;min-width:150px}
+.btn{border:0;border-radius:14px;padding:12px 16px;color:white;font-weight:800;background:linear-gradient(135deg,var(--primary),#4f8cff);box-shadow:0 10px 30px rgba(124,92,255,.2)}
+.btn.cyan{background:linear-gradient(135deg,#00a9d6,var(--cyan));color:#031019}
+.btn.green{background:linear-gradient(135deg,#0bbd75,var(--green));color:#04150e}
+.btn.red{background:linear-gradient(135deg,#db3c5b,var(--red))}
+.btn.secondary{background:#19233a;border:1px solid var(--border);box-shadow:none}
+.result{margin-top:15px;padding:17px;border-radius:16px;background:#090f1e;border:1px solid var(--border);min-height:65px}
+.bigword{font-size:36px;font-weight:900;direction:ltr;text-align:left}
+.muted{color:var(--muted)}.success{color:var(--green)}.danger{color:var(--red)}.gold{color:var(--gold)}
+.progress{height:10px;background:#070b16;border-radius:999px;overflow:hidden;margin:12px 0}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--primary));transition:.35s}
+.choice{width:100%;text-align:right;background:#0a1222;color:white;border:1px solid var(--border);padding:13px;border-radius:13px;margin:7px 0}
+.choice:hover{border-color:var(--cyan)}.choice.correct{border-color:var(--green);background:rgba(37,217,138,.12)}
+.choice.wrong{border-color:var(--red);background:rgba(255,93,115,.12)}
+.exercise-word{font-size:28px;font-weight:900;direction:ltr;text-align:center;margin:10px}
+footer{padding:40px 0;color:var(--muted);text-align:center}
+.toast{position:fixed;bottom:20px;left:20px;background:#101a2e;border:1px solid var(--border);padding:13px 16px;border-radius:14px;opacity:0;transform:translateY(15px);transition:.25s;z-index:50}
+.toast.show{opacity:1;transform:translateY(0)}
+.pill{display:inline-block;padding:4px 9px;border-radius:999px;background:rgba(124,92,255,.13);color:#bcaeff;font-size:12px;font-weight:800}
+.lesson{border:1px solid var(--border);border-radius:16px;padding:15px;margin:10px 0;background:#0a1222}
+.lesson h3{margin:0 0 7px}.lesson p{color:#c1cbe0;line-height:1.7;margin:0}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="brand">🐺 المتوحش ستور <span>×</span> حمو ستور</div>
+    <div class="navlinks">
+      <button onclick="go('translator')">الترجمة</button>
+      <button onclick="go('learning')">تعلم الإنجليزية</button>
+      <button onclick="go('trainer')">التدريب</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container">
+    <div class="badge">⚡ English Learning Engine</div>
+    <h1>اتعلم الإنجليزية<br><span class="gradient">بصوتك وبطريقتك</span></h1>
+    <p>موقع المتوحش ستور وحمو ستور لتعلم الإنجليزية: نطق، ترجمة، تكرار ذكي، تدريبات وتصحيح فوري. كل شيء في ملف HTML واحد جاهز للرفع على GitHub Pages.</p>
+    <div class="stats">
+      <div class="stat">🔊 نطق قابل للتكرار</div><div class="stat">🌍 ترجمة فورية</div>
+      <div class="stat">🧠 تدريب وتكرار</div><div class="stat">📱 متجاوب للموبايل</div>
+    </div>
+  </div>
+</section>
+
+<section id="translator">
+<div class="container">
+<div class="section-title"><div><h2>🌍 الترجمة + النطق</h2><p>اكتب كلمة أو جملة وحدد اللغة ثم ترجم وانطق.</p></div></div>
+<div class="grid">
+<div class="card">
+<label>النص</label>
+<textarea id="translateInput" placeholder="اكتب English أو العربية هنا..."></textarea>
+<div class="row">
+<div><label>من</label><select id="fromLang"><option value="en">English</option><option value="ar">العربية</option></select></div>
+<div><label>إلى</label><select id="toLang"><option value="ar">العربية</option><option value="en">English</option></select></div>
+</div>
+<div class="row" style="margin-top:12px">
+<button class="btn cyan" onclick="translateText()">ترجم الآن ⚡</button>
+<button class="btn secondary" onclick="swapLangs()">تبديل ↔</button>
+</div>
+<div id="translationResult" class="result">الترجمة ستظهر هنا...</div>
+</div>
+<div class="card">
+<h3>🔊 ناطق الكلمات والجمل</h3>
+<label>النص المراد نطقه</label>
+<input id="speakText" placeholder="Example: I am learning English">
+<div class="row">
+<div><label>عدد مرات النطق</label><input id="repeatCount" type="number" min="1" max="20" value="3"></div>
+<div><label>سرعة النطق</label><input id="rate" type="number" min=".5" max="1.8" step=".1" value="0.9"></div>
+</div>
+<label>الصوت المتاح على جهازك</label>
+<select id="voiceSelect"><option>جارٍ تحميل الأصوات...</option></select>
+<div class="row" style="margin-top:12px">
+<button class="btn" onclick="speakRepeated()">🔊 انطق</button>
+<button class="btn secondary" onclick="speechSynthesis.cancel()">إيقاف</button>
+</div>
+<div class="result"><span class="muted">ملاحظة:</span> الأصوات تعتمد على المتصفح والجهاز. يمكنك اختيار صوت English من القائمة.</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="learning">
+<div class="container">
+<div class="section-title"><div><h2>📚 قسم تعلم الإنجليزية</h2><p>دروس قصيرة + كلمات + نطق + مراجعة.</p></div></div>
+<div class="grid">
+<div class="card third"><span class="pill">Beginner</span><h3>الأساسيات</h3><div class="lesson"><h3>Hello</h3><p>مرحبًا</p><button class="btn secondary" onclick="quickSpeak('Hello')">🔊 اسمع</button></div><div class="lesson"><h3>Thank you</h3><p>شكرًا لك</p><button class="btn secondary" onclick="quickSpeak('Thank you')">🔊 اسمع</button></div></div>
+<div class="card third"><span class="pill">Daily</span><h3>جمل يومية</h3><div class="lesson"><h3>How are you?</h3><p>كيف حالك؟</p><button class="btn secondary" onclick="quickSpeak('How are you?')">🔊 اسمع</button></div><div class="lesson"><h3>I am learning English.</h3><p>أنا أتعلم الإنجليزية.</p><button class="btn secondary" onclick="quickSpeak('I am learning English.')">🔊 اسمع</button></div></div>
+<div class="card third"><span class="pill">Practice</span><h3>ذاكر بذكاء</h3><p class="muted">اسمع الكلمة، حاول نطقها، ثم استخدم التدريب. الموقع يحفظ تقدمك على هذا الجهاز.</p><button class="btn green" onclick="go('trainer')">ابدأ التدريب 🚀</button></div>
+</div>
+</div>
+</section>
+
+<section id="trainer">
+<div class="container">
+<div class="section-title"><div><h2>🧠 التدريب الذكي</h2><p>اختبر نفسك، واحصل على نتيجة فورية.</p></div></div>
+<div class="card full">
+<div class="row"><div><span class="pill">Question <span id="qNum">1</span>/10</span></div><div style="text-align:left"><span class="pill">Score: <span id="score">0</span></span></div></div>
+<div class="progress"><div id="progressBar" class="bar"></div></div>
+<div id="exerciseArea"></div>
+<div id="feedback" class="result">اختر الإجابة ثم اضغط التالي.</div>
+<div class="row" style="margin-top:12px">
+<button id="nextBtn" class="btn" onclick="nextQuestion()">التالي ➜</button>
+<button class="btn secondary" onclick="restartQuiz()">إعادة التدريب</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container">🐺 المتوحش ستور × حمو ستور • English Learning Lab<br><small>ملف واحد مستقل، مناسب لـ GitHub Pages. الترجمة تحتاج اتصالًا بالإنترنت.</small></div>
+</footer>
+<div id="toast" class="toast"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth"});}
+function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200);}
+
+let voices=[];
+function loadVoices(){
+  voices=speechSynthesis.getVoices();
+  const select=$("voiceSelect"); select.innerHTML="";
+  const english=voices.filter(v=>/^en(-|_)/i.test(v.lang));
+  (english.length?english:voices).forEach((v,i)=>{
+    const o=document.createElement("option");o.value=voices.indexOf(v);o.textContent=`${v.name} (${v.lang})`;
+    select.appendChild(o);
+  });
+}
+loadVoices(); if("onvoiceschanged" in speechSynthesis)speechSynthesis.onvoiceschanged=loadVoices;
+
+function speakOnce(text,rate=.9){
+  return new Promise(resolve=>{
+    const u=new SpeechSynthesisUtterance(text);u.lang=/[\u0600-\u06FF]/.test(text)?"ar-EG":"en-US";
+    u.rate=rate;
+    const idx=parseInt($("voiceSelect").value);
+    if(voices[idx])u.voice=voices[idx];
+    u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u);
+  });
+}
+async function speakRepeated(){
+  const text=$("speakText").value.trim();let n=Math.min(20,Math.max(1,parseInt($("repeatCount").value)||1));
+  if(!text)return toast("اكتب كلمة أو جملة أولًا");
+  speechSynthesis.cancel();
+  for(let i=0;i<n;i++){await speakOnce(text,parseFloat($("rate").value)||.9);if(i<n-1)await new Promise(r=>setTimeout(r,250));}
+}
+function quickSpeak(text){$("speakText").value=text;speakRepeated();}
+
+async function translateText(){
+  const text=$("translateInput").value.trim(),from=$("fromLang").value,to=$("toLang").value;
+  if(!text)return toast("اكتب النص أولًا");
+  const box=$("translationResult");box.innerHTML="⏳ جاري الترجمة...";
+  try{
+    const url=`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${from}|${to}`;
+    const r=await fetch(url);const data=await r.json();
+    const translated=data?.responseData?.translatedText;
+    if(!translated)throw new Error("No translation");
+    box.innerHTML=`<div class="bigword">${escapeHTML(translated)}</div><div class="muted" style="margin-top:8px">تمت الترجمة من ${from==="en"?"English":"العربية"} إلى ${to==="en"?"English":"العربية"}.</div>`;
+    $("speakText").value=translated;
+  }catch(e){
+    box.innerHTML=`<span class="danger">تعذر الاتصال بخدمة الترجمة الآن.</span><br><span class="muted">جرّب مرة أخرى مع اتصال بالإنترنت.</span>`;
+  }
+}
+function swapLangs(){const a=$("fromLang"),b=$("toLang");[a.value,b.value]=[b.value,a.value];}
+
+function escapeHTML(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));}
+
+const questions=[
+["apple",["تفاحة","برتقالة","كتاب","سيارة"],0],
+["book",["قلم","كتاب","بيت","مدرسة"],1],
+["water",["ماء","طعام","شمس","ليل"],0],
+["teacher",["طبيب","مهندس","مدرس","لاعب"],2],
+["beautiful",["سريع","جميل","قديم","صغير"],1],
+["Good morning",["مساء الخير","تصبح على خير","صباح الخير","إلى اللقاء"],2],
+["I am happy.",["أنا سعيد.","أنا متعب.","أنا جائع.","أنا مريض."],0],
+["Where are you?",["ماذا تريد؟","أين أنت؟","من أنت؟","متى تأتي؟"],1],
+["Thank you",["من فضلك","آسف","شكرًا لك","العفو"],2],
+["I love learning English.",["أحب تعلم الإنجليزية.","لا أحب الإنجليزية.","أنا أدرس الرياضيات.","أريد النوم."],0]
+];
+let qi=0,score=0,answered=false;
+function renderQuestion(){
+  answered=false;const q=questions[qi];$("qNum").textContent=qi+1;$("score").textContent=score;
+  $("progressBar").style.width=((qi)/questions.length*100)+"%";
+  $("feedback").innerHTML="اختر الإجابة ثم اضغط التالي.";
+  $("nextBtn").textContent=qi===questions.length-1?"عرض النتيجة 🏆":"التالي ➜";
+  let h=`<div class="exercise-word">${escapeHTML(q[0])}</div><div class="muted" style="text-align:center">ما الترجمة الصحيحة؟</div>`;
+  q[1].forEach((x,i)=>h+=`<button class="choice" onclick="answer(${i},this)">${escapeHTML(x)}</button>`);
+  $("exerciseArea").innerHTML=h;
+}
+function answer(i,el){
+  if(answered)return;answered=true;const q=questions[qi],buttons=document.querySelectorAll(".choice");
+  buttons[q[2]].classList.add("correct");
+  if(i===q[2]){score++;$("feedback").innerHTML=`<span class="success">✅ صح! ممتاز.</span>`;toast("إجابة صحيحة 🎯");}
+  else{el.classList.add("wrong");$("feedback").innerHTML=`<span class="danger">❌ غلط.</span> الإجابة الصحيحة: <b>${escapeHTML(q[1][q[2]])}</b>`;toast("راجع الإجابة وجرّب تاني");}
+  $("score").textContent=score;
+}
+function nextQuestion(){
+  if(!answered)return toast("اختار إجابة الأول");
+  if(qi<questions.length-1){qi++;renderQuestion();}else showResult();
+}
+function showResult(){
+  $("progressBar").style.width="100%";
+  const pct=Math.round(score/questions.length*100);
+  $("exerciseArea").innerHTML=`<div style="text-align:center;padding:25px"><div style="font-size:55px">🏆</div><h2>خلصت التدريب!</h2><p class="muted">نتيجتك</p><div style="font-size:48px;font-weight:900">${score}/10</div><p class="${pct>=70?"success":"gold"}">${pct>=90?"ممتاز جدًا!":pct>=70?"شغل قوي، كمل التدريب.":"راجع الكلمات وأعد المحاولة."}</p></div>`;
+  $("feedback").innerHTML="يمكنك إعادة التدريب من الزر بالأسفل.";
+  $("nextBtn").style.display="none";
+  localStorage.setItem("englishBestScore",Math.max(score,+(localStorage.getItem("englishBestScore")||0)));
+}
+function restartQuiz(){qi=0;score=0;$("nextBtn").style.display="block";renderQuestion();}
+renderQuestion();
+</script>
+</body>
+</html>
